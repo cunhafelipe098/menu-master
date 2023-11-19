@@ -1,9 +1,23 @@
-import { Button } from 'antd';
+import Router from "./routes/Router";
+import GlobalStyle from "./styles/global";
+import { ConfigProvider } from 'antd';
 
-const App = () => (
-  <div className="App">
-    <Button type="primary">Button</Button>
-  </div>
-);
 
-export default App;
+function App() {
+  return (
+    <ConfigProvider
+      theme={{
+        components: {
+          Carousel: {
+            dotActiveWidth: 100
+          },
+        },
+      }}
+    >
+      <Router/>
+      <GlobalStyle/>
+    </ConfigProvider>
+  )
+}
+
+export default App
