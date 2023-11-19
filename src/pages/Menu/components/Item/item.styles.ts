@@ -55,6 +55,11 @@ export const StyledModal = styled(Modal)`
 
   .ant-modal-header {
     background: snow;
+    
+    .ant-image {
+      object-fit: cover; 
+      width: -webkit-fill-available;
+    }
   }
 
   .ant-modal-body {

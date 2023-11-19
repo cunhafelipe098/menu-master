@@ -45,7 +45,7 @@ function Item(props: any) {
             <StyledModal width={503} title={
                     <Image
                         src={imgModal}
-                        width={503}
+                        
                         placeholder
                         preview={false}
                     />
