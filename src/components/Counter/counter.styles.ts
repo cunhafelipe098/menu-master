@@ -10,6 +10,9 @@ export const CounterContainer = styled.div`
 `;
 
 export const StyledButton = styled(Button)`
-    border-radius: 1rem;
-    width: 2rem;
+  display: flex;
+  border-radius: 1rem;
+  width: 2rem;
+  align-items: center;
+  justify-content: center;
 `; 
