@@ -3,7 +3,7 @@ import { Input, Collapse } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 
 import CarouselCard from './components/CarouselCard';
-import Item from './components/Item';
+import MenuItem from './components/MenuItem';
 
 
 import { Container, MainContent, DesktopBasket, Page, MenuSection } from './menu.styles'
@@ -13,18 +13,18 @@ const items: CollapseProps['items'] = [
     key: '1',
     label: <MenuSection>Burgers</MenuSection>,
     children: <div style={{display: 'flex', gap: '1rem', flexDirection: 'column'}}>
-      <Item label='Smash Burguer' price='R$31,00' description='100g pressed hamburger, mozzarella cheese, pickle'/>
-      <Item label='Smash Burguer' price='R$32,00' description='100g pressed hamburger, mozzarella cheese, pickle'/>
-      <Item label='Smash Burguer' price='R$33,00' description='100g pressed hamburger, mozzarella cheese, pickle'/>
+      <MenuItem label='Smash Burguer' price='R$31,00' description='100g pressed hamburger, mozzarella cheese, pickle'/>
+      <MenuItem label='Smash Burguer' price='R$32,00' description='100g pressed hamburger, mozzarella cheese, pickle'/>
+      <MenuItem label='Smash Burguer' price='R$33,00' description='100g pressed hamburger, mozzarella cheese, pickle'/>
     </div>,
   },
   {
     key: '2',
     label: <MenuSection>Burgers</MenuSection>,
     children: <div style={{display: 'flex', gap: '1rem', flexDirection: 'column'}}>
-      <Item label='Smash Burguer' price='R$31,00' description='100g pressed hamburger, mozzarella cheese, pickle'/>
-      <Item label='Smash Burguer' price='R$32,00' description='100g pressed hamburger, mozzarella cheese, pickle'/>
-      <Item label='Smash Burguer' price='R$33,00' description='100g pressed hamburger, mozzarella cheese, pickle'/>
+      <MenuItem label='Smash Burguer' price='R$31,00' description='100g pressed hamburger, mozzarella cheese, pickle'/>
+      <MenuItem label='Smash Burguer' price='R$32,00' description='100g pressed hamburger, mozzarella cheese, pickle'/>
+      <MenuItem label='Smash Burguer' price='R$33,00' description='100g pressed hamburger, mozzarella cheese, pickle'/>
     </div>,
   },
 ];

@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Image, Modal, Button } from 'antd';
 
 import Counter from '../../../../components/Counter';
+import ItemDetails from '../ItemDetails';
 
-import { ContainerDetail, Label, Description, Container, Price, StyledModal } from './item.styles';
+import { ContainerDetail, Label, Description, Container, Price } from './menuItem.styles';
 
 import imgModal from '../../../../assets/61a7ae34affd8 1.png';
 
-function Item(props: any) {
+function MenuItem(props: any) {
 
     
     
@@ -44,26 +45,9 @@ function Item(props: any) {
                 />
 
             </Container>
-            <StyledModal width={503} 
-                title={
-                    <Image
-                        src={imgModal}
-                        
-                        placeholder
-                        preview={false}
-                    />
-                } 
-                footer={
-                    <Counter/>
-                }
-                
-                open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-                <p>Some contents...</p>
-                <p>Some contents...</p>
-                <p>Some contents...</p>
-            </StyledModal>
+            <ItemDetails label={props.label} description={props.description} isModalOpen={isModalOpen} handleOk={handleOk} handleCancel={handleCancel}/>
         </>
     )
 }
 
-export default Item
+export default MenuItem

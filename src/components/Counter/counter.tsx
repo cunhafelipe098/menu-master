@@ -4,7 +4,7 @@ import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
 
 import { CounterContainer, StyledButton } from './counter.styles';
 
-const Counter = () => {
+function Counter () {
   const [count, setCount] = useState(0);
 
   const increment = () => {
