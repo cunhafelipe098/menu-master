@@ -15,7 +15,6 @@ export const Container = styled.div`
 export const ContainerDetail = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 `;
 
 export const Label = styled.p`
