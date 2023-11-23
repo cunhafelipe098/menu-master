@@ -23,7 +23,7 @@ export const Description = styled.p`
     color: #464646;
 `;
 
-export const ModifierTitles = styled.p`
+export const ModifierTitle = styled.p`
     font-weight: 700;
     size: 16px;
     line-height: 18.75px;
@@ -61,7 +61,7 @@ export const StyledModal = styled(Modal)`
     flex: 1;
     overflow-y: auto;
     padding: 1.5rem;
-    padding-bottom: 130px;
+    padding-bottom: 150px;
     scrollbar-width: thin;
   }
 

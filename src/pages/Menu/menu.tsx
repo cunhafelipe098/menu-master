@@ -1,39 +1,40 @@
-import type { CollapseProps } from 'antd';
-import { Input, Collapse } from 'antd';
-import { SearchOutlined } from '@ant-design/icons';
-
-import CarouselCard from './components/CarouselCard';
-import MenuItem from './components/MenuItem';
-
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux'
 
+import { Input, Collapse } from 'antd';
+import { SearchOutlined } from '@ant-design/icons';
+import CarouselCard from './components/CarouselCard';
+import MenuItem from './components/MenuItem';
+import { api } from '../../components/Api'
+import { Container, MainContent, DesktopBasket, Page } from './menu.styles'
 
-import { Container, MainContent, DesktopBasket, Page, MenuSection } from './menu.styles'
 
-const items: CollapseProps['items'] = [
-  {
-    key: '1',
-    label: <MenuSection>Burgers</MenuSection>,
-    children: <div style={{display: 'flex', gap: '1rem', flexDirection: 'column'}}>
-      <MenuItem label='Smash Burguer' price='R$31,00' description='100g pressed hamburger, mozzarella cheese, pickle'/>
-      <MenuItem label='Smash Burguer' price='R$32,00' description='100g pressed hamburger, mozzarella cheese, pickle'/>
-      <MenuItem label='Smash Burguer' price='R$33,00' description='100g pressed hamburger, mozzarella cheese, pickle'/>
-    </div>,
-  },
-  {
-    key: '2',
-    label: <MenuSection>Burgers</MenuSection>,
-    children: <div style={{display: 'flex', gap: '1rem', flexDirection: 'column'}}>
-      <MenuItem label='Smash Burguer' price='R$31,00' description='100g pressed hamburger, mozzarella cheese, pickle'/>
-      <MenuItem label='Smash Burguer' price='R$32,00' description='100g pressed hamburger, mozzarella cheese, pickle'/>
-      <MenuItem label='Smash Burguer' price='R$33,00' description='100g pressed hamburger, mozzarella cheese, pickle'/>
-    </div>,
-  },
-];
+
+
+const { Panel } = Collapse;
 
 function Menu() {
 
+  const [menu, setMenu] = useState<any>([]);
+  const [loading, setLoading] = useState(false);
+  const [defaultActiveKey, setDefaultActiveKey] = useState<any>([]); 
+
   const basket = useSelector((state: any) => state.basket.value)
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(async () => {
+      const response = await api.get(`/1922b263-87a2-423f-952f-c576c97490f5`);
+      setMenu(response.data);
+      setDefaultActiveKey(activeKeys(response.data.sections));
+    }, 1);
+    setLoading(false);
+  }, []);
+
+  const activeKeys = (sections: any) => {
+    return Array.from({ length: sections?.length }, (_, index) => sections[index].id);
+  }
+  
 
   return (
     <Page>
@@ -41,7 +42,35 @@ function Menu() {
       <Container>
         <MainContent>
           <CarouselCard/>
-          <Collapse defaultActiveKey={[1,2,3]} size='large' expandIconPosition='end'	ghost items={items} />
+          <Collapse 
+            ghost
+            activeKey={defaultActiveKey}
+            onChange={(items)=>{setDefaultActiveKey(items)}} 
+            size='large' 
+            expandIconPosition='end'	
+          >
+            {
+              menu.sections && menu.sections.map((section: any) => {                
+                return (
+                  <Panel header={section.name} key={section.id}>
+                    {
+                      section.items && section.items.map(({ name, price, description, images, modifiers }: any) => {
+                        return (
+                          <MenuItem
+                            label={name}
+                            price={price}
+                            description={description}
+                            image={images && images[0]?.image}
+                            modifiers={modifiers}
+                          />
+                        );
+                      })
+                    }
+                  </Panel>
+                );
+              })
+            }
+          </Collapse>
         </MainContent>
         <DesktopBasket>
           <div>Carrinho</div>

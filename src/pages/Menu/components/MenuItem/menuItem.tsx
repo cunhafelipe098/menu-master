@@ -1,33 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import { Image, Modal, Button } from 'antd';
+import { useEffect, useState } from 'react';
 
-import Counter from '../../../../components/Counter';
+import { Image } from 'antd';
 import ItemDetails from '../ItemDetails';
-
 import { ContainerDetail, Label, Description, Container, Price } from './menuItem.styles';
-
-import imgModal from '../../../../assets/61a7ae34affd8 1.png';
 
 function MenuItem(props: any) {
 
-    
-    
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     
     useEffect(() => {
     }, [isModalOpen]);
 
     const showModal = () => {
         setIsModalOpen(true);
-      };
-    
-      const handleOk = () => {
+    };
+
+    const handleOk = () => {
         setIsModalOpen(false);
-      };
-    
-      const handleCancel = () => {
-          setIsModalOpen(false);
-      };
+    };
+
+    const handleCancel = () => {
+        setIsModalOpen(false);
+    };
 
     return (
         <>
@@ -35,7 +29,7 @@ function MenuItem(props: any) {
                 <ContainerDetail>
                     <Label>{props.label}</Label>
                     <Description>{props.description}</Description>
-                    <Price>{props.price}</Price>
+                    <Price>{`$ ${props.price}`}</Price>
                 </ContainerDetail>
                 <Image
                     src={props.image}
@@ -43,9 +37,14 @@ function MenuItem(props: any) {
                     placeholder
                     preview={false}
                 />
-
             </Container>
-            <ItemDetails label={props.label} description={props.description} isModalOpen={isModalOpen} handleOk={handleOk} handleCancel={handleCancel}/>
+            <ItemDetails 
+                label={props.label} 
+                description={props.description} 
+                modifiers={props.modifiers}
+                isModalOpen={isModalOpen} 
+                handleOk={handleOk} 
+                handleCancel={handleCancel}/>
         </>
     )
 }

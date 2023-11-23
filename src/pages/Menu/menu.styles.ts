@@ -49,11 +49,3 @@ export const DesktopBasket = styled.div`
     background-color: #FFFFFF;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 `;
-
-export const MenuSection = styled.h1`
-    font-weight: 500px;
-    size: 24px;
-    line-height: 28.13px;
-    color: #121212;
-    letter-spacing: 0.5px;
-`;
