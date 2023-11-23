@@ -5,6 +5,8 @@ import { SearchOutlined } from '@ant-design/icons';
 import CarouselCard from './components/CarouselCard';
 import MenuItem from './components/MenuItem';
 
+import { useSelector } from 'react-redux'
+
 
 import { Container, MainContent, DesktopBasket, Page, MenuSection } from './menu.styles'
 
@@ -31,6 +33,8 @@ const items: CollapseProps['items'] = [
 
 function Menu() {
 
+  const basket = useSelector((state: any) => state.basket.value)
+
   return (
     <Page>
       <Input placeholder="default size" prefix={<SearchOutlined />} />
@@ -41,6 +45,15 @@ function Menu() {
         </MainContent>
         <DesktopBasket>
           <div>Carrinho</div>
+          {basket.map((item: any) => (
+            <>
+              <p>{item.label}</p>
+              <p>{item.amout}</p>
+              <p>{item.price}</p>
+            </>
+          
+          ))}
+          
         </DesktopBasket>
       </Container>
     </Page>
