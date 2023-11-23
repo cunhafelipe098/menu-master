@@ -7,6 +7,7 @@ export const CounterContainer = styled.div`
   justify-content: center;
   font-size: 24px;
   gap: 1rem;
+  margin: 1rem;
 `;
 
 export const StyledButton = styled(Button)`
