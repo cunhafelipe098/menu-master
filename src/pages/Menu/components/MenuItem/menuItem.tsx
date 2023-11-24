@@ -31,12 +31,16 @@ function MenuItem(props: any) {
                     <Description>{props.description}</Description>
                     <Price>{`$ ${props.price}`}</Price>
                 </ContainerDetail>
-                <Image
-                    src={props.image}
-                    style={{ borderRadius: '4px', width: '8rem', height: '5.3rem'}}
-                    placeholder
-                    preview={false}
-                />
+                {
+                    props.image && (
+                        <Image
+                            src={props.image}
+                            style={{ borderRadius: '4px', width: '8rem', height: '5.3rem'}}
+                            placeholder
+                            preview={false}
+                        />
+                    )
+                }
             </Container>
             <ItemDetails 
                 label={props.label} 

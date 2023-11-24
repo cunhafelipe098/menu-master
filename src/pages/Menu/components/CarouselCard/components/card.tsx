@@ -6,7 +6,7 @@ function Card(props: any) {
         <Page>
             <Image 
                 src={props.image}
-                style={{ borderRadius: '4rem', width: '4rem', height: '4rem'}}
+                style={{ borderRadius: '4rem', width: '4rem', height: '4rem', overflow: 'hidden'}}
                 placeholder
                 preview={false}
             />

@@ -1,34 +1,28 @@
 import { Tabs } from 'antd';
-import headerImage from "../../../../assets/header.png";
 import Card from './components/card';
-import type { TabsProps } from 'antd';
 
-function CarouselCard() {
+const { TabPane } = Tabs;
 
-    const items: TabsProps['items'] = [
-        {
-            label: <Card image={headerImage} label='Burguers'/>,
-            key: 'Burguers'
-        },
-        {
-            label: <Card image={headerImage} label='Drinks'/>,
-            key: 'Drinks'
-        },
-        {
-            label: <Card image={headerImage} label='Desserts'/>,
-            key: 'Desserts',
-        },
-        {
-            label: <Card image={headerImage} label='Desserts2'/>,
-            key: 'Desserts2',
-        }
-    ];
+type Section = {
+    label: string;
+    image: string;
+}
 
+type CarouselCardProps = {
+    sections: Section[];
+  };
+
+function CarouselCard({ sections }: CarouselCardProps) {
+    
     return (
-        <div style={{width: '100%'}}>
-            <Tabs defaultActiveKey="1" items={items}  />
-        </div>
-    )
+        <Tabs style={{width: '100%'}} defaultActiveKey="1">
+            {
+                sections && sections.map((section: Section) => (
+                    <TabPane key={section.label} tab={(<Card image={section.image} label={section.label}/>)} />
+                ))
+            }
+        </Tabs>
+)
 }
 
 export default CarouselCard;

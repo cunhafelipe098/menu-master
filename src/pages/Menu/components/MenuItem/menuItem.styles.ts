@@ -4,6 +4,7 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-between;
     gap: 4px;
+    margin: 0.5rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
 
@@ -15,6 +16,7 @@ export const Container = styled.div`
 export const ContainerDetail = styled.div`
     display: flex;
     flex-direction: column;
+    gap: 4px;
 `;
 
 export const Label = styled.p`

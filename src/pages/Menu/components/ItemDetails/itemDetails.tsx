@@ -69,25 +69,23 @@ function ItemDetails(props: ItemSection) {
                 open={props.isModalOpen} onOk={props.handleOk} onCancel={props.handleCancel}
             >
                 {
-                    props.modifiers && props.modifiers.map((modifier: Modifier) => {
-                        return (
-                            <>
-                                <ModifierTitle>{modifier.name}</ModifierTitle>
-                                <Radio.Group onChange={onChange}  defaultValue={modifier.items[0].price} >
+                    props.modifiers && props.modifiers.map((modifier: Modifier) => (
+                            <div key={modifier.name}>
+                                <ModifierTitle key={modifier.name}>{modifier.name}</ModifierTitle>
+                                <Radio.Group key={modifier.name} onChange={onChange}  defaultValue={modifier.items[0].price} >
                                     <Space direction="vertical">
                                         {
-                                            modifier.items.map((item: Item) => {
-                                                return <Radio value={item.price}>
+                                            modifier.items.map((item: Item) => (<Radio key={item.name} value={item.price}>
                                                     <p>{item.name}</p>
                                                     <p>{`$ ${item.price}`}</p>
                                                 </Radio>
-                                            })
+                                            ))
                                         }
                                     </Space>
                                 </Radio.Group>
-                            </>
+                            </div>
                         )
-                    })
+                    )
                 }
             </StyledModal>
         </>

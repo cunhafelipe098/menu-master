@@ -36,6 +36,10 @@ export const MainContent = styled.div`
     padding: 0 1rem;
     background-color: #FFFFFF;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    .ant-collapse {
+        width: inherit
+    }
 `;
 
 export const DesktopBasket = styled.div`
